@@ -1,17 +1,24 @@
 class Solution {
 public:
-    bool isValidSudoku(vector<vector<char>>& board) {
-        int used1[9][9] = {0}, used2[9][9] = {0},used3[9][9] = {0};
-        for(int i = 0 ; i  <board.size(); ++i){
-            for(int j = 0 ; j < board[i].size(); ++j){
-                if(board[i][j] != '.'){
-                    int num = board[i][j] - '0' - 1, k = i/3*3+j/3;
-                     if(used1[i][num] || used2[j][num] || used3[k][num])
-                        return false;
-                    used1[i][num] = used2[j][num] = used3[k][num] = 1;
-                }
-            }
-        }
-        return true;
+    map<string,int>mp;
+    
+    void stringstreeam(string s)
+    {
+        stringstream ss(s);
+        string word;
+        while(ss>>word) mp[word]++;
+    }
+
+    vector<string> uncommonFromSentences(string s1, string s2) 
+    {
+        stringstreeam(s1);
+        stringstreeam(s2);
+
+        vector<string>ans;
+        for(auto x:mp)
+            if(x.second==1) 
+                ans.push_back(x.first);
+
+        return ans;
     }
 };
