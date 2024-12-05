@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool canChange(string start, string target) {
+    bool canChange(string s, string t) {
         int n=s.size();
         for(int i=0, j=0; i<n || j<n; i++, j++){
             while(i<n && s[i]=='_') i++;
